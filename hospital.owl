@@ -8,9 +8,7 @@
 
 <http://www.hospital.org/Ontologies/hospital.owl> rdf:type owl:Ontology ;
                                                   
-                                                  rdfs:comment "wwww" ,
-                                                               "comment" ,
-                                                               "This is about a hospital ontology" .
+                                                  rdfs:comment "This is about a hospital ontology" .
 
 
 #################################################################
@@ -20,21 +18,60 @@
 #################################################################
 
 
-###  http://www.hospital.org/Ontologies.owl#has
+###  http://www.hospital.org/Ontologies/hospital.owl#hasEvents
 
-:has rdf:type owl:ObjectProperty .
-
-
-
-###  http://www.hospital.org/Ontologies.owl#hasEq
-
-:hasEq rdf:type owl:ObjectProperty .
+<http://www.hospital.org/Ontologies/hospital.owl#hasEvents> rdf:type owl:ObjectProperty ;
+                                                            
+                                                            rdfs:subPropertyOf <http://www.hospital.org/Ontologies/hospital.owl#hasWorkLoad> .
 
 
 
-###  http://www.hospital.org/Ontologies.owl#workin
+###  http://www.hospital.org/Ontologies/hospital.owl#hasPeople
 
-:workin rdf:type owl:ObjectProperty .
+<http://www.hospital.org/Ontologies/hospital.owl#hasPeople> rdf:type owl:ObjectProperty ,
+                                                                     owl:TransitiveProperty ;
+                                                            
+                                                            rdfs:subPropertyOf <http://www.hospital.org/Ontologies/hospital.owl#hasWorkLoad> .
+
+
+
+###  http://www.hospital.org/Ontologies/hospital.owl#hasServices
+
+<http://www.hospital.org/Ontologies/hospital.owl#hasServices> rdf:type owl:ObjectProperty ;
+                                                              
+                                                              rdfs:subPropertyOf <http://www.hospital.org/Ontologies/hospital.owl#hasWorkLoad> .
+
+
+
+###  http://www.hospital.org/Ontologies/hospital.owl#hasWorkLoad
+
+<http://www.hospital.org/Ontologies/hospital.owl#hasWorkLoad> rdf:type owl:ObjectProperty .
+
+
+
+###  http://www.hospital.org/Ontologies/hospital.owl#isEventOf
+
+<http://www.hospital.org/Ontologies/hospital.owl#isEventOf> rdf:type owl:ObjectProperty ;
+                                                            
+                                                            owl:inverseOf <http://www.hospital.org/Ontologies/hospital.owl#hasEvents> ;
+                                                            
+                                                            rdfs:subPropertyOf <http://www.hospital.org/Ontologies/hospital.owl#isWorkLoadOf> .
+
+
+
+###  http://www.hospital.org/Ontologies/hospital.owl#isServiceOf
+
+<http://www.hospital.org/Ontologies/hospital.owl#isServiceOf> rdf:type owl:ObjectProperty ;
+                                                              
+                                                              owl:inverseOf <http://www.hospital.org/Ontologies/hospital.owl#hasServices> ;
+                                                              
+                                                              rdfs:subPropertyOf <http://www.hospital.org/Ontologies/hospital.owl#isWorkLoadOf> .
+
+
+
+###  http://www.hospital.org/Ontologies/hospital.owl#isWorkLoadOf
+
+<http://www.hospital.org/Ontologies/hospital.owl#isWorkLoadOf> rdf:type owl:ObjectProperty .
 
 
 
@@ -65,35 +102,11 @@
 
 
 
-###  http://www.hospital.org/Ontologies.owl#BloodPressureMonitor
-
-:BloodPressureMonitor rdf:type owl:Class ;
-                      
-                      rdfs:subClassOf :Equipment .
-
-
-
-###  http://www.hospital.org/Ontologies.owl#CTScanner
-
-:CTScanner rdf:type owl:Class ;
-           
-           rdfs:subClassOf :Equipment .
-
-
-
 ###  http://www.hospital.org/Ontologies.owl#CancerCenter
 
 :CancerCenter rdf:type owl:Class ;
               
               rdfs:subClassOf :Service .
-
-
-
-###  http://www.hospital.org/Ontologies.owl#Canteen
-
-:Canteen rdf:type owl:Class ;
-         
-         rdfs:subClassOf :ImmovableProperty .
 
 
 
@@ -113,43 +126,11 @@
 
 
 
-###  http://www.hospital.org/Ontologies.owl#Dental
-
-:Dental rdf:type owl:Class ;
-        
-        rdfs:subClassOf :ImmovableProperty .
-
-
-
-###  http://www.hospital.org/Ontologies.owl#Dentist
-
-:Dentist rdf:type owl:Class ;
-         
-         rdfs:subClassOf :Staff .
-
-
-
 ###  http://www.hospital.org/Ontologies.owl#Doctor
 
 :Doctor rdf:type owl:Class ;
         
         rdfs:subClassOf :Staff .
-
-
-
-###  http://www.hospital.org/Ontologies.owl#ECG
-
-:ECG rdf:type owl:Class ;
-     
-     rdfs:subClassOf :Equipment .
-
-
-
-###  http://www.hospital.org/Ontologies.owl#ECGRoom
-
-:ECGRoom rdf:type owl:Class ;
-         
-         rdfs:subClassOf :ImmovableProperty .
 
 
 
@@ -161,19 +142,11 @@
 
 
 
-###  http://www.hospital.org/Ontologies.owl#EmergencyUnit
-
-:EmergencyUnit rdf:type owl:Class ;
-               
-               rdfs:subClassOf :ImmovableProperty .
-
-
-
 ###  http://www.hospital.org/Ontologies.owl#Equipment
 
 :Equipment rdf:type owl:Class ;
            
-           rdfs:subClassOf :MovableProperty ;
+           rdfs:subClassOf :PhysicalResource ;
            
            owl:disjointWith :Vehicle .
 
@@ -199,24 +172,6 @@
 
 
 
-###  http://www.hospital.org/Ontologies.owl#ICU
-
-:ICU rdf:type owl:Class ;
-     
-     rdfs:subClassOf :ImmovableProperty .
-
-
-
-###  http://www.hospital.org/Ontologies.owl#ImmovableProperty
-
-:ImmovableProperty rdf:type owl:Class ;
-                   
-                   rdfs:subClassOf :PhysicalResource ;
-                   
-                   owl:disjointWith :MovableProperty .
-
-
-
 ###  http://www.hospital.org/Ontologies.owl#InfantService
 
 :InfantService rdf:type owl:Class ;
@@ -230,30 +185,6 @@
 :IntensiveCare rdf:type owl:Class ;
                
                rdfs:subClassOf :Service .
-
-
-
-###  http://www.hospital.org/Ontologies.owl#Laboratory
-
-:Laboratory rdf:type owl:Class ;
-            
-            rdfs:subClassOf :ImmovableProperty .
-
-
-
-###  http://www.hospital.org/Ontologies.owl#MRTScanner
-
-:MRTScanner rdf:type owl:Class ;
-            
-            rdfs:subClassOf :Equipment .
-
-
-
-###  http://www.hospital.org/Ontologies.owl#MovableProperty
-
-:MovableProperty rdf:type owl:Class ;
-                 
-                 rdfs:subClassOf :PhysicalResource .
 
 
 
@@ -273,14 +204,6 @@
 
 
 
-###  http://www.hospital.org/Ontologies.owl#OPD
-
-:OPD rdf:type owl:Class ;
-     
-     rdfs:subClassOf :ImmovableProperty .
-
-
-
 ###  http://www.hospital.org/Ontologies.owl#Patient
 
 :Patient rdf:type owl:Class ;
@@ -291,17 +214,7 @@
 
 ###  http://www.hospital.org/Ontologies.owl#People
 
-:People rdf:type owl:Class ;
-        
-        owl:disjointWith :Service .
-
-
-
-###  http://www.hospital.org/Ontologies.owl#Pharmacy
-
-:Pharmacy rdf:type owl:Class ;
-          
-          rdfs:subClassOf :ImmovableProperty .
+:People rdf:type owl:Class .
 
 
 
@@ -319,27 +232,11 @@
 
 
 
-###  http://www.hospital.org/Ontologies.owl#PulseEximeter
-
-:PulseEximeter rdf:type owl:Class ;
-               
-               rdfs:subClassOf :Equipment .
-
-
-
 ###  http://www.hospital.org/Ontologies.owl#Radiology
 
 :Radiology rdf:type owl:Class ;
            
            rdfs:subClassOf :Service .
-
-
-
-###  http://www.hospital.org/Ontologies.owl#ScanRoom
-
-:ScanRoom rdf:type owl:Class ;
-          
-          rdfs:subClassOf :ImmovableProperty .
 
 
 
@@ -373,14 +270,6 @@
 
 
 
-###  http://www.hospital.org/Ontologies.owl#SurgeryEquipment
-
-:SurgeryEquipment rdf:type owl:Class ;
-                  
-                  rdfs:subClassOf :Equipment .
-
-
-
 ###  http://www.hospital.org/Ontologies.owl#TechnicalOfficer
 
 :TechnicalOfficer rdf:type owl:Class ;
@@ -397,14 +286,6 @@
 
 
 
-###  http://www.hospital.org/Ontologies.owl#Thermometer
-
-:Thermometer rdf:type owl:Class ;
-             
-             rdfs:subClassOf :Equipment .
-
-
-
 ###  http://www.hospital.org/Ontologies.owl#Treatment
 
 :Treatment rdf:type owl:Class ;
@@ -417,39 +298,55 @@
 
 :Vehicle rdf:type owl:Class ;
          
-         rdfs:subClassOf :MovableProperty .
+         rdfs:subClassOf :PhysicalResource .
 
 
 
-###  http://www.hospital.org/Ontologies.owl#Ventilator
+###  http://www.hospital.org/Ontologies/hospital.owl#Building
 
-:Ventilator rdf:type owl:Class ;
-            
-            rdfs:subClassOf :Equipment .
-
-
-
-###  http://www.hospital.org/Ontologies.owl#Ward
-
-:Ward rdf:type owl:Class ;
-      
-      rdfs:subClassOf :ImmovableProperty .
+<http://www.hospital.org/Ontologies/hospital.owl#Building> rdf:type owl:Class ;
+                                                           
+                                                           rdfs:subClassOf :PhysicalResource .
 
 
 
-###  http://www.hospital.org/Ontologies.owl#WashRoom
+###  http://www.hospital.org/Ontologies/hospital.owl#ClinicalService
 
-:WashRoom rdf:type owl:Class ;
-          
-          rdfs:subClassOf :ImmovableProperty .
+<http://www.hospital.org/Ontologies/hospital.owl#ClinicalService> rdf:type owl:Class ;
+                                                                  
+                                                                  rdfs:subClassOf :Service .
 
 
 
-###  http://www.hospital.org/Ontologies.owl#XRayRoom
+###  http://www.hospital.org/Ontologies/hospital.owl#GovernmentHospital
 
-:XRayRoom rdf:type owl:Class ;
-          
-          rdfs:subClassOf :ImmovableProperty .
+<http://www.hospital.org/Ontologies/hospital.owl#GovernmentHospital> rdf:type owl:Class ;
+                                                                     
+                                                                     rdfs:subClassOf :Hospital .
+
+
+
+###  http://www.hospital.org/Ontologies/hospital.owl#Medicine
+
+<http://www.hospital.org/Ontologies/hospital.owl#Medicine> rdf:type owl:Class ;
+                                                           
+                                                           rdfs:subClassOf :PhysicalResource .
+
+
+
+###  http://www.hospital.org/Ontologies/hospital.owl#PrivateHospital
+
+<http://www.hospital.org/Ontologies/hospital.owl#PrivateHospital> rdf:type owl:Class ;
+                                                                  
+                                                                  rdfs:subClassOf :Hospital .
+
+
+
+###  http://www.hospital.org/Ontologies/hospital.owl#Visitors
+
+<http://www.hospital.org/Ontologies/hospital.owl#Visitors> rdf:type owl:Class ;
+                                                           
+                                                           rdfs:subClassOf :People .
 
 
 
@@ -472,6 +369,14 @@
                 :IntensiveCare
                 :Radiology
                 :Surgery
+              )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Event
+                :Hospital
+                :People
+                :PhysicalResource
+                :Service
               )
 ] .
 
